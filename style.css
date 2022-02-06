@@ -83,12 +83,29 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]::before {
-  content: "X";
+  background-image: url(/images/x.svg);
+  content: "";
   font-weight: bolder;
-  color: green;
-  font-size: 20px;
+  width: 18px;
+  height: 18px;
   position: absolute;
-  left: 3px;
+  visibility: hidden;
+}
+input[type="checkbox"]:checked::before {
+  visibility: visible;
+}
+
+.label-as-placeholder {
+  position: relative;
+}
+
+/*Stylized Rating Radio Inputs*/
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url(/images/star.svg);
+  width: 20px;
+  height: 20px;
 }
 
 /*

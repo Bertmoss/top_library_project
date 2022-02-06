@@ -28,6 +28,18 @@ function Book(
 }
 
 //function prompting for library books from user
+
+let string = ""
+
+
+
+inputs.forEach(input => {
+  string += `${input.value},`
+})
+
+
+
+/*
 function addBookToLibrary() {
   let book = new Book(undefined, undefined, undefined, undefined, undefined);
   inputs.forEach((input) => {
@@ -40,3 +52,4 @@ function addBookToLibrary() {
   return library.push(book);
 }
 console.log(library.length);
+*/
