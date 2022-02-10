@@ -1,3 +1,34 @@
+//RATING BUTTON FUNCTIONALITY
+
+const starRating = document.querySelectorAll(".starRating")
+
+starRating.forEach(star => {
+  star.addEventListener("change", )
+} )
+
+
+
+//activate other stars
+function activateStars(star.value) {
+  const twoStars = document.querySelector("#twoRating")
+  const threeStars = document.querySelector("#threeRating")
+  const fourStars = document.querySelector("#fourRating")
+  const fiveStar = document.querySelector("#fiveRating")
+  //a switch statement here 
+  switch () {
+    case star.value == 2
+  }
+
+}
+
+
+
+
+
+
+
+
+
 const inputs = document.querySelectorAll("input");
 const submitBtn = document.querySelector("#submitBtn");
 
