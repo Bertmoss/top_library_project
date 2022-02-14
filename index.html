@@ -49,7 +49,6 @@
             name="dateStart"
             id="dateStart"
             placeholder="mm/dd/yyyy"
-            disabled
           />
         </div>
         <div class="row-form row-disabled">
@@ -59,26 +58,51 @@
         <div class="row-form row-disabled">
           <fieldset>
             <legend>Rating:</legend>
-            <input class="starRating" type="radio" name="rating" id="oneRating" value="1" />
+            <input
+              class="starRating blackStar"
+              type="radio"
+              name="rating"
+              id="oneRating"
+              value="1"
+            />
             <label for="oneRating">1</label>
-            <input class="starRating" type="radio" name="rating" id="twoRating" value="2"/>
+            <input
+              class="starRating blackStar"
+              type="radio"
+              name="rating"
+              id="twoRating"
+              value="2"
+            />
             <label for="twoRating">2</label>
-            <input class="starRating" type="radio" name="rating" id="threeRating" value="3"/>
+            <input
+              class="starRating blackStar"
+              type="radio"
+              name="rating"
+              id="threeRating"
+              value="3"
+            />
             <label for="threeRating">3</label>
-            <input class="starRating" type="radio" name="rating" id="fourRating" value="4"/>
+            <input
+              class="starRating blackStar"
+              type="radio"
+              name="rating"
+              id="fourRating"
+              value="4"
+            />
             <label for="fourRating">4</label>
-            <input class="starRating" type="radio" name="rating" id="fiveRating" value="5"/>
+            <input
+              class="starRating blackStar"
+              type="radio"
+              name="rating"
+              id="fiveRating"
+              value="5"
+            />
             <label for="fiveRating">5</label>
           </fieldset>
         </div>
         <div class="row-form row-newline row-disabled">
           <label for="review">Review:</label>
-          <textarea
-            name="review"
-            id="review"
-            cols="30"
-            rows="10"
-          ></textarea>
+          <textarea name="review" id="review" cols="30" rows="10"></textarea>
         </div>
       </section>
       <button type="submit" id="submitBtn">Submit</button>

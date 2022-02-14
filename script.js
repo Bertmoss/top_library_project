@@ -3,11 +3,30 @@
 const starRating = document.querySelectorAll(".starRating")
 
 starRating.forEach(star => {
-  star.addEventListener("change", )
-} )
+  let selectedStarValue;
+  star.addEventListener("click", function() {
+    selectedStarValue = this.value;
+    activateStars(selectedStarValue);
+    //selectedStarValue = star.value;
+  });
+} );
+
+function activateStars(selectedStarValue) {
+  starRating.forEach(star => {
+    if (star.value < selectedStarValue) {
+     star.classList.add("goldenStar")
+     star.classList.remove("blackStar")
+    } else {
+     star.classList.remove("goldenStar")
+     star.classList.add("blackStar")
+    }
+  })
+}
 
 
 
+
+/*
 //activate other stars
 function activateStars(star.value) {
   const twoStars = document.querySelector("#twoRating")
@@ -19,7 +38,7 @@ function activateStars(star.value) {
     case star.value == 2
   }
 
-}
+} */
 
 
 

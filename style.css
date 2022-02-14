@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&display=swap');
+
+
 body {
   margin: 0px;
 }
@@ -10,7 +13,7 @@ form {
 
 form label,
 form button {
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Roboto Slab', serif;
   font-size: 16px;
 }
 label[for="title"],
@@ -52,6 +55,7 @@ button {
   margin: 20px auto 20px auto;
   display: block;
 }
+
 /* Required Sign*/
 input + span {
   position: relative;
@@ -88,37 +92,39 @@ input[type="checkbox"]::before {
   transform: scale(0.7);
   font-weight: bolder;
   position: absolute;
-  
+
   visibility: hidden;
 }
 input[type="checkbox"]:checked::before {
   visibility: visible;
 }
 
-input[type="checkbox"]:checked{
-  border: 3px solid green
+input[type="checkbox"]:checked {
+  border: 3px solid green;
 }
-
 
 /*Stylized Rating Radio Inputs*/
 input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
-  background-image: url(/images/star.svg);
   width: 20px;
   height: 20px;
 }
-input[type="radio"]:checked {
+input[type="radio"]:checked,
+.goldenStar {
   background-image: url(/images/star-gold.svg);
 }
-input[type="radio"]+label {
-  width:0;
+.blackStar {
+  background-image: url(/images/star.svg);
+}
+
+input[type="radio"] + label {
+  width: 0;
   height: 0;
   margin: 0;
   padding: 0;
   font-size: 1px;
 }
-
 
 /*
 form {
