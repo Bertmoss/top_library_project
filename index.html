@@ -41,68 +41,87 @@
           <input type="checkbox" name="read" id="read" value="true" />
         </div>
       </section>
-      <section>
-        <div class="row-form row-disabled">
+      <section class="not-displayed">
+        <div class="row-form">
           <label for="dateStart">Date started?</label>
           <input
             type="date"
             name="dateStart"
             id="dateStart"
-            placeholder="mm/dd/yyyy"
+            class="disabled"
+            disabled
           />
         </div>
-        <div class="row-form row-disabled">
+        <div class="row-form">
           <label for="dateEnd">Date finished?</label>
-          <input type="date" name="dateEnd" id="dateEnd" />
+          <input
+            type="date"
+            name="dateEnd"
+            id="dateEnd"
+            class="disabled"
+            disabled
+          />
         </div>
-        <div class="row-form row-disabled">
+        <div class="row-form">
           <fieldset>
             <legend>Rating:</legend>
             <input
-              class="starRating blackStar"
+              class="star-rating black-star disabled"
               type="radio"
               name="rating"
               id="oneRating"
               value="1"
+              disabled
             />
             <label for="oneRating">1</label>
             <input
-              class="starRating blackStar"
+              class="star-rating black-star disabled"
               type="radio"
               name="rating"
               id="twoRating"
               value="2"
+              disabled
             />
             <label for="twoRating">2</label>
             <input
-              class="starRating blackStar"
+              class="star-rating black-star disabled"
               type="radio"
               name="rating"
               id="threeRating"
               value="3"
+              disabled
             />
             <label for="threeRating">3</label>
             <input
-              class="starRating blackStar"
+              class="star-rating black-star disabled"
               type="radio"
               name="rating"
               id="fourRating"
               value="4"
+              disabled
             />
             <label for="fourRating">4</label>
             <input
-              class="starRating blackStar"
+              class="star-rating black-star disabled"
               type="radio"
               name="rating"
               id="fiveRating"
               value="5"
+              disabled
             />
             <label for="fiveRating">5</label>
           </fieldset>
         </div>
-        <div class="row-form row-newline row-disabled">
+        <div class="row-form row-newline">
           <label for="review">Review:</label>
-          <textarea name="review" id="review" cols="30" rows="10"></textarea>
+          <textarea
+            class="disabled"
+            disabled
+            name="review"
+            id="review"
+            cols="30"
+            rows="10"
+          ></textarea>
         </div>
       </section>
       <button type="submit" id="submitBtn">Submit</button>

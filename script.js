@@ -1,52 +1,48 @@
 //RATING BUTTON FUNCTIONALITY
 
-const starRating = document.querySelectorAll(".starRating")
+const starRating = document.querySelectorAll(".star-rating");
 
-starRating.forEach(star => {
+starRating.forEach((star) => {
   let selectedStarValue;
-  star.addEventListener("click", function() {
+  star.addEventListener("click", function () {
     selectedStarValue = this.value;
     activateStars(selectedStarValue);
-    //selectedStarValue = star.value;
   });
-} );
+});
 
 function activateStars(selectedStarValue) {
-  starRating.forEach(star => {
-    if (star.value < selectedStarValue) {
-     star.classList.add("goldenStar")
-     star.classList.remove("blackStar")
+  starRating.forEach((star) => {
+    if (star.value <= selectedStarValue) {
+      star.classList.add("golden-star");
+      star.classList.remove("black-star");
     } else {
-     star.classList.remove("goldenStar")
-     star.classList.add("blackStar")
+      star.classList.remove("golden-star");
+      star.classList.add("black-star");
     }
-  })
+  });
 }
 
+//HAVE YOU FINISHED IT CHECKBOX and disabling/enabling the not displayed section
+let readCheckbox = document.querySelector("#read");
 
-
-
-/*
-//activate other stars
-function activateStars(star.value) {
-  const twoStars = document.querySelector("#twoRating")
-  const threeStars = document.querySelector("#threeRating")
-  const fourStars = document.querySelector("#fourRating")
-  const fiveStar = document.querySelector("#fiveRating")
-  //a switch statement here 
-  switch () {
-    case star.value == 2
-  }
-
-} */
-
-
-
-
-
-
-
-
+readCheckbox.addEventListener("click", () => {
+  let notDisplayedSection = document.querySelector("section:last-of-type");
+  let disabledInputs = document.querySelectorAll(".disabled");
+  notDisplayedSection.classList.toggle("not-displayed");
+  disabledInputs.forEach((disabledInput) => {
+    //reseting the rating radio input
+    disabledInput.checked = false;
+    disabledInput.classList.replace("golden-star", "black-star");
+    //reseting the values of the other inputs (excluding radio)
+    if (disabledInput.getAttribute("type") !== "radio") {
+      disabledInput.value = null;
+    }
+    //disabling and enabling the hidden inputs
+    disabledInput.getAttribute("disabled") === null
+      ? disabledInput.setAttribute("disabled", "")
+      : disabledInput.removeAttribute("disabled");
+  });
+});
 
 const inputs = document.querySelectorAll("input");
 const submitBtn = document.querySelector("#submitBtn");
@@ -79,15 +75,11 @@ function Book(
 
 //function prompting for library books from user
 
-let string = ""
+let string = "";
 
-
-
-inputs.forEach(input => {
-  string += `${input.value},`
-})
-
-
+inputs.forEach((input) => {
+  string += `${input.value},`;
+});
 
 /*
 function addBookToLibrary() {
