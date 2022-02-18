@@ -10,7 +10,13 @@
   </head>
 
   <body>
+    <header>
+      <h1>Library</h1>
+      <button type="button" id="add-book-btn">+</button>
+    </header>
     <form method="post" action="">
+      <button type="reset" id="exit-form-btn">
+      </button>
       <section>
         <div class="row-form row-newline">
           <label for="title">Title:</label>
@@ -26,7 +32,7 @@
           <label for="genre">Genre:</label>
           <select name="genre" id="genre">
             <option value="fantasy">Fantasy</option>
-            <option value="scienceFiction">Sci-Fi</option>
+            <option value="science-fiction">Sci-Fi</option>
             <option value="nonfiction">Nonfiction</option>
             <option value="romance">Romance</option>
             <option value="horror">Horror</option>
@@ -43,21 +49,21 @@
       </section>
       <section class="not-displayed">
         <div class="row-form">
-          <label for="dateStart">Date started?</label>
+          <label for="date-start">Date started?</label>
           <input
             type="date"
-            name="dateStart"
-            id="dateStart"
+            name="date-start"
+            id="date-start"
             class="disabled"
             disabled
           />
         </div>
         <div class="row-form">
-          <label for="dateEnd">Date finished?</label>
+          <label for="date-end">Date finished?</label>
           <input
             type="date"
-            name="dateEnd"
-            id="dateEnd"
+            name="date-end"
+            id="date-end"
             class="disabled"
             disabled
           />
@@ -69,47 +75,47 @@
               class="star-rating black-star disabled"
               type="radio"
               name="rating"
-              id="oneRating"
+              id="one-rating"
               value="1"
               disabled
             />
-            <label for="oneRating">1</label>
+            <label for="one-rating">1</label>
             <input
               class="star-rating black-star disabled"
               type="radio"
               name="rating"
-              id="twoRating"
+              id="two-rating"
               value="2"
               disabled
             />
-            <label for="twoRating">2</label>
+            <label for="two-rating">2</label>
             <input
               class="star-rating black-star disabled"
               type="radio"
               name="rating"
-              id="threeRating"
+              id="three-rating"
               value="3"
               disabled
             />
-            <label for="threeRating">3</label>
+            <label for="three-rating">3</label>
             <input
               class="star-rating black-star disabled"
               type="radio"
               name="rating"
-              id="fourRating"
+              id="four-rating"
               value="4"
               disabled
             />
-            <label for="fourRating">4</label>
+            <label for="four-rating">4</label>
             <input
               class="star-rating black-star disabled"
               type="radio"
               name="rating"
-              id="fiveRating"
+              id="five-rating"
               value="5"
               disabled
             />
-            <label for="fiveRating">5</label>
+            <label for="five-rating">5</label>
           </fieldset>
         </div>
         <div class="row-form row-newline">
@@ -124,7 +130,7 @@
           ></textarea>
         </div>
       </section>
-      <button type="submit" id="submitBtn">Submit</button>
+      <button type="submit" id="submit-btn">Submit</button>
     </form>
   </body>
 </html>
