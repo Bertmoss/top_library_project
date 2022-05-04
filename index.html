@@ -31,11 +31,13 @@
         <div class="row-form">
           <label for="genre">Genre:</label>
           <select name="genre" id="genre">
+            <option selected disabled value>Select an option</option>
             <option value="fantasy">Fantasy</option>
             <option value="science-fiction">Sci-Fi</option>
             <option value="nonfiction">Nonfiction</option>
             <option value="romance">Romance</option>
             <option value="horror">Horror</option>
+            <option value="other">Other</option>
           </select>
         </div>
         <div class="row-form">
@@ -44,7 +46,7 @@
         </div>
         <div class="row-form">
           <label for="read">Have you finished it?</label>
-          <input type="checkbox" name="read" id="read" value="true" />
+          <input type="checkbox" name="read" id="read" value="no" />
         </div>
       </section>
       <section class="not-displayed">
@@ -130,7 +132,7 @@
           ></textarea>
         </div>
       </section>
-      <button type="button" id="submit-btn">Submit</button>
+      <button type="submit" id="submit-btn">Submit</button>
     </form>
     <section id="book-library-section"> 
     </section>

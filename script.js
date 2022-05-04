@@ -36,6 +36,7 @@ function resetStars() {
 const readCheckbox = document.querySelector("#read");
 
 readCheckbox.addEventListener("click", () => {
+  readCheckbox.setAttribute("value", "yes")
   let notDisplayedSection = document.querySelector("section:last-of-type");
   let disabledInputs = document.querySelectorAll(".disabled");
   notDisplayedSection.classList.toggle("not-displayed");
@@ -78,10 +79,19 @@ function Book() {
   const author = document.querySelector("#author");
   const genre = document.querySelector("#genre");
   const pages = document.querySelector("#pages");
+  const read = document.querySelector("#read");
+  const dateStarted = document.querySelector("#date-start");
+  const dateEnded = document.querySelector("#date-end")
+  const review = document.querySelector("#review")
+  let dateTextStart = "Date started"
   this.title = title.value;
   this.author = author.value;
   this.genre = genre.value;
   this.pages = pages.value;
+  this.read = read.value;
+  this.dateStarted = dateStarted.value;
+  this.dateEnded = dateEnded.value;
+  this.review = review.value;
 }
 
 //array filled with library books
@@ -111,21 +121,31 @@ function displayLibrary() {
     container.appendChild(list);
 
     for (let [key, value] of Object.entries(book)) {
+      if (key === "read") {
+        continue;
+      } else if (value) { 
       let listItem = document.createElement("li");
       listItem.textContent = `${key}: ${value}`;
       list.appendChild(listItem);
     }
+    }
   }
 }
 
-
+/* check validity  */
 
 /* event listener for the "submit" button in the form*/
 function clickSubmitBtn() {
+
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+console.log(title.checkValidity())
+if (title.checkValidity() && author.checkValidity()) {
+
   addBookToLibrary();
   displayLibrary();
   form.reset();
-
+}
 }
 
 submitBtn.addEventListener("click",clickSubmitBtn)
