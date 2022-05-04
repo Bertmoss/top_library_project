@@ -131,7 +131,7 @@ input:required + span::after {
   padding: 3px 10px;
   border: black 1px solid;
   content: "required";
-  left: 67px;
+  left: 60px;
   bottom: 37px;
 
   text-align: center;

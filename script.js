@@ -26,16 +26,12 @@ function resetStars() {
   stars.forEach((star) => {
     star.checked = false;
     star.classList.replace("golden-star", "black-star");
-  })
+  });
 }
-
-
 
 //CHECKBOX FUNCTIONALITY (HAVE YOU FINISHED IT)
 //Disabling/enabling the not displayed section
 //NEED TO ORGANIZE THE DISABLING ENABLING BETTER. SEE IF NECESSARY TO DISABLE THINGS WHEN HIDDEN
-
-
 
 const readCheckbox = document.querySelector("#read");
 
@@ -60,37 +56,19 @@ const addBookBtn = document.querySelector("#add-book-btn");
 const form = document.querySelector("form");
 let notDisplayedSection = document.querySelector("section:last-of-type");
 
-
-addBookBtn.addEventListener("click", function() {
+addBookBtn.addEventListener("click", function () {
   form.classList.remove("not-displayed");
+});
 
-})
-
-const exitFormBtn = document.querySelector("#exit-form-btn")
+const exitFormBtn = document.querySelector("#exit-form-btn");
 exitFormBtn.addEventListener("click", () => {
   resetStars();
-  notDisplayedSection.classList.toggle("not-displayed");
+  notDisplayedSection.classList.add("not-displayed");
   form.classList.add("not-displayed");
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
+});
 
 const inputs = document.querySelectorAll("input");
 const submitBtn = document.querySelector("#submitBtn");
-
-//array filled with library books
-const library = [];
 
 //constructor function for new Book Objects
 function Book(
@@ -115,25 +93,33 @@ function Book(
   this.review = review;
 }
 
-//function prompting for library books from user
+/* constructor function for Book Objects*/
 
-let string = "";
-
-inputs.forEach((input) => {
-  string += `${input.value},`;
-});
-
-/*
-function addBookToLibrary() {
-  let book = new Book(undefined, undefined, undefined, undefined, undefined);
-  inputs.forEach((input) => {
-    switch (input) {
-      case input.name == title:
-        book.title = input.value;
-        break;
-    }
-  });
-  return library.push(book);
+function Book() {
+  const title = document.querySelector("#title");
+  const author = document.querySelector("#author");
+  const genre = document.querySelector("#genre");
+  const pages = document.querySelector("#pages");
+  this.title = title.value;
+  this.author = author.value;
+  this.genre = genre.value;
+  this.pages = pages.value;
 }
-console.log(library.length);
-*/
+
+//array filled with library books
+let myLibrary = [];
+
+function addBookToLibrary() {
+  let book = new Book();
+  myLibrary.push(book);
+}
+
+const librarySection = document.querySelector("#book-library-section");
+
+function displayLibrary() {
+  for (let book of myLibrary) {
+    /* create new element (table) add all the info to it and append it */
+    librarySection.textContent = book.title;
+  }
+}
+displayLibrary();
