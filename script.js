@@ -70,28 +70,6 @@ exitFormBtn.addEventListener("click", () => {
 const inputs = document.querySelectorAll("input");
 const submitBtn = document.querySelector("#submit-btn");
 
-//constructor function for new Book Objects
-function Book(
-  title,
-  author,
-  genre,
-  pages,
-  read,
-  dateStart,
-  dateEnd,
-  rating,
-  review
-) {
-  this.title = title;
-  this.author = author;
-  this.genre = genre;
-  this.pages = pages;
-  this.read = read;
-  this.dateStart = dateStart;
-  this.dateEnd = dateEnd;
-  this.rating = rating;
-  this.review = review;
-}
 
 /* constructor function for Book Objects*/
 
@@ -146,6 +124,8 @@ function displayLibrary() {
 function clickSubmitBtn() {
   addBookToLibrary();
   displayLibrary();
+  form.reset();
+
 }
 
 submitBtn.addEventListener("click",clickSubmitBtn)
