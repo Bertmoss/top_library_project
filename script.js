@@ -119,11 +119,28 @@ function addBookToLibrary() {
 const librarySection = document.querySelector("#book-library-section");
 
 function displayLibrary() {
+  /* removes the previously shown books */
+  let allListedBooks = document.querySelectorAll(".listed-book");
+  allListedBooks.forEach((listedBook) => {
+    listedBook.remove();
+  })
+  
   for (let book of myLibrary) {
-    /* create new element (table) add all the info to it and append it */
-    librarySection.textContent = book.title;
+    let container = document.createElement("div");
+    librarySection.appendChild(container);
+    let list = document.createElement("ul"); /* create a class that will style this list element and add it */
+    container.classList.add("listed-book");
+    container.appendChild(list);
+
+    for (let [key, value] of Object.entries(book)) {
+      let listItem = document.createElement("li");
+      listItem.textContent = `${key}: ${value}`;
+      list.appendChild(listItem);
+    }
   }
 }
+
+
 
 /* event listener for the "submit" button in the form*/
 function clickSubmitBtn() {

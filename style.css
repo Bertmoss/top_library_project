@@ -18,9 +18,9 @@ h1 {
   bottom: 25px;
   right: 25px;
 }
-:checked{
+/* :checked{
   background: purple;
-}
+} */
 
 body {
   margin: 0px;
