@@ -204,9 +204,24 @@ input[type="radio"] + label {
   height: 25px;
   background: url(/images/x-circle.svg) no-repeat center;
 }
+.dlt-book-btn {
+  position: absolute;
+  right: 2px;
+  top:2px;
+  margin: 0px;
+  padding: 0px;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  width: 25px;
+  height: 25px;
+  background: url(/images/x-circle.svg) no-repeat center;
+
+}
 
 
 .book {
+  position: relative;
   width: 300px;
   border: black 1px solid;
 }

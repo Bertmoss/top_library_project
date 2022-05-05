@@ -143,11 +143,23 @@ function displayLibrary() {
   for (let book of myLibrary) {
     let container = document.createElement("div");
     container.classList.add("book")
+    container.setAttribute("data-book-position", myLibrary.indexOf(book))
     librarySection.appendChild(container);
+    let dltBookBtn = document.createElement("button");
+    dltBookBtn.setAttribute("type", "button");
+    dltBookBtn.setAttribute("data-book-position", myLibrary.indexOf(book))
+    dltBookBtn.classList.add("dlt-book-btn");
+    container.appendChild(dltBookBtn);
+    dltBookBtn.addEventListener("click", () => {
+      if (container["data-book-position"]===dltBookBtn["data-book-position"]) {
+        container.remove();
+        myLibrary.splice(dltBookBtn["data-book-position"], 1)
+      }
+    })
     let list =
       document.createElement(
         "ul"
-      ); /* create a class that will style this list element and add it */
+      ); 
     container.classList.add("listed-book");
     container.appendChild(list);
 
