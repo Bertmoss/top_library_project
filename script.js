@@ -1,3 +1,9 @@
+/* QUERY SELECTORS*/
+/* 1. checkbox functionality */
+const readCheckbox = document.querySelector("#read");
+const disabledInputs = document.querySelectorAll(".disabled");
+
+
 //RATING BUTTON FUNCTIONALITY
 
 const starRating = document.querySelectorAll(".star-rating");
@@ -29,30 +35,30 @@ function resetStars() {
   });
 }
 
-//CHECKBOX FUNCTIONALITY
-//Disabling/enabling the not displayed section
-//NEED TO ORGANIZE THE DISABLING ENABLING BETTER. SEE IF NECESSARY TO DISABLE THINGS WHEN HIDDEN
+//1. "HAVE YOU FINISHED IT" CHECKBOX FUNCTIONALITY (readCheckbox) 
 
-const readCheckbox = document.querySelector("#read");
+/* Disables or enables the inputs that are hidden behind the "Have you finished it" checkbox (readCheckbox)*/
 
-
+function disableEnableHiddenInputs() {
+  disabledInputs.forEach((disabledInput) => {
+    disabledInput.getAttribute("disabled") === null
+      ? disabledInput.setAttribute("disabled")
+      : disabledInput.removeAttribute("disabled");
+  });
+}
 
 readCheckbox.addEventListener("click", () => {
+  /* hides and shows the section*/
   let notDisplayedSection = document.querySelector("section:last-of-type");
-  let disabledInputs = document.querySelectorAll(".disabled");
   notDisplayedSection.classList.toggle("not-displayed");
   resetStars();
+  disableEnableHiddenInputs();
   disabledInputs.forEach((disabledInput) => {
     //reseting the values of the other inputs (excluding radio since the value isn't added by the user and has to stay the same)
     if (disabledInput.getAttribute("type") !== "radio") {
       disabledInput.value = null;
-    }
-    //disabling and enabling the hidden inputs
-    disabledInput.getAttribute("disabled") === null
-      ? disabledInput.setAttribute("disabled", "")
-      : disabledInput.removeAttribute("disabled");
-  });
-});
+    };
+})});
 
 const addBookBtn = document.querySelector("#add-book-btn");
 const form = document.querySelector("form");
@@ -74,8 +80,34 @@ const inputs = document.querySelectorAll("input");
 const submitBtn = document.querySelector("#submit-btn");
 
 /* constructor function for Book Objects*/
-
 function Book() {
+  const allInputs = document.querySelectorAll("input");
+  allInputs.forEach((input) => {
+    if (input.name === "date-start") {
+      let inputName = "Started reading on";
+      this[inputName] = input.value;
+    } else if (input.name === "date-end") {
+      let inputName = "Finished reading on";
+      this[inputName] = input.value;
+    } else if (input.name === "rating") {
+      if (input.name === "rating" && input.checked) {
+        let inputName = input.name;
+        this[inputName] = `${input.value} stars`; 
+      }
+    } else {
+    console.log(`${input.name} : ${input.value}`)
+    console.log(input.checked)
+    let inputName = input.name;
+    this[inputName] = input.value;
+    }
+  });
+
+}
+
+
+
+
+function Book2() {
   const title = document.querySelector("#title");
   const author = document.querySelector("#author");
   const genre = document.querySelector("#genre");
@@ -84,7 +116,6 @@ function Book() {
   const dateStarted = document.querySelector("#date-start");
   const dateEnded = document.querySelector("#date-end");
   const review = document.querySelector("#review");
-  let dateTextStart = "Date started";
   this.title = title.value;
   this.author = author.value;
   this.genre = genre.value;
@@ -134,7 +165,6 @@ function displayLibrary() {
 
     for (let [key, value] of Object.entries(book)) {
       if (key === "read") {
-        console.log(`${key}: ${value}`);
         continue;
       } else if (value) {
         let listItem = document.createElement("li");
