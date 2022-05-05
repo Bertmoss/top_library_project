@@ -3,7 +3,6 @@
 const readCheckbox = document.querySelector("#read");
 const disabledInputs = document.querySelectorAll(".disabled");
 
-
 //RATING BUTTON FUNCTIONALITY
 
 const starRating = document.querySelectorAll(".star-rating");
@@ -35,7 +34,7 @@ function resetStars() {
   });
 }
 
-//1. "HAVE YOU FINISHED IT" CHECKBOX FUNCTIONALITY (readCheckbox) 
+//1. "HAVE YOU FINISHED IT" CHECKBOX FUNCTIONALITY (readCheckbox)
 
 /* Disables or enables the inputs that are hidden behind the "Have you finished it" checkbox (readCheckbox)*/
 
@@ -57,8 +56,9 @@ readCheckbox.addEventListener("click", () => {
     //reseting the values of the other inputs (excluding radio since the value isn't added by the user and has to stay the same)
     if (disabledInput.getAttribute("type") !== "radio") {
       disabledInput.value = null;
-    };
-})});
+    }
+  });
+});
 
 const addBookBtn = document.querySelector("#add-book-btn");
 const form = document.querySelector("form");
@@ -89,51 +89,35 @@ function Book() {
     } else if (input.name === "date-end") {
       let inputName = "Finished reading on";
       this[inputName] = input.value;
+      /* rating filter makes sure that only the checked rating form control is added.
+      Otherwise it would add each one since they all have a value */
     } else if (input.name === "rating") {
       if (input.name === "rating" && input.checked) {
         let inputName = input.name;
-        this[inputName] = `${input.value} stars`; 
+        this[inputName] = `${input.value} stars`;
       }
     } else {
-    console.log(`${input.name} : ${input.value}`)
-    console.log(input.checked)
-    let inputName = input.name;
-    this[inputName] = input.value;
+      let inputName = input.name;
+      this[inputName] = input.value;
     }
   });
-
-}
-
-
-
-
-function Book2() {
-  const title = document.querySelector("#title");
-  const author = document.querySelector("#author");
-  const genre = document.querySelector("#genre");
-  const pages = document.querySelector("#pages");
-  
-  const dateStarted = document.querySelector("#date-start");
-  const dateEnded = document.querySelector("#date-end");
+  /* textarea form control */
   const review = document.querySelector("#review");
-  this.title = title.value;
-  this.author = author.value;
-  this.genre = genre.value;
-  this.pages = pages.value;
-  /* this.read = read.value; */
-  this.dateStarted = dateStarted.value;
-  this.dateEnded = dateEnded.value;
   this.review = review.value;
+  /* select form control */
+  const genre = document.querySelector("#genre");
+  this.genre = genre.value;
   this.checkReadStatus();
 }
-Book.prototype.checkReadStatus = function() {
+
+Book.prototype.checkReadStatus = function () {
   const read = document.querySelector("#read");
   if (read.checked) {
     this.read = true;
   } else {
     this.read = false;
   }
-}
+};
 
 //array filled with library books
 let myLibrary = [];
@@ -188,14 +172,13 @@ function clickSubmitBtn() {
     let disabledInputs = document.querySelectorAll(".disabled");
     disabledInputs.forEach((disabledInput) => {
       disabledInput.getAttribute("disabled") === null
-      ? disabledInput.setAttribute("disabled", "")
-      : disabledInput.removeAttribute("disabled");
-  })
-    
-    exitFormBtnReset()
-    form.reset(); 
+        ? disabledInput.setAttribute("disabled", "")
+        : disabledInput.removeAttribute("disabled");
+    });
+
+    exitFormBtnReset();
+    form.reset();
   }
- 
 }
 
 submitBtn.addEventListener("click", clickSubmitBtn);
