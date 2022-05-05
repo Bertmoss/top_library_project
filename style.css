@@ -205,6 +205,28 @@ input[type="radio"] + label {
   background: url(/images/x-circle.svg) no-repeat center;
 }
 
+
+.book {
+  width: 300px;
+  border: black 1px solid;
+}
+
+li {
+  list-style: none;
+  word-wrap: break-word;
+  max-width: 250px;
+}
+
+ul {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  gap: 20px;
+  
+}
+
 /*
 form {
   width: 500px;

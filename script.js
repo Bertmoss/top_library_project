@@ -40,9 +40,9 @@ function resetStars() {
 
 function disableEnableHiddenInputs() {
   disabledInputs.forEach((disabledInput) => {
-    disabledInput.getAttribute("disabled") === null
-      ? disabledInput.setAttribute("disabled")
-      : disabledInput.removeAttribute("disabled");
+    disabledInput.toggleAttribute("disabled")/* getAttribute("disabled") === null
+      ? disabledInput.setAttribute("disabled", "")
+      : disabledInput.removeAttribute("disabled"); */
   });
 }
 
@@ -72,6 +72,9 @@ function exitFormBtnReset() {
   resetStars();
   notDisplayedSection.classList.add("not-displayed");
   form.classList.add("not-displayed");
+  if (readCheckbox.checked) {
+    disableEnableHiddenInputs();
+  }
 }
 const exitFormBtn = document.querySelector("#exit-form-btn");
 exitFormBtn.addEventListener("click", exitFormBtnReset);
@@ -81,6 +84,9 @@ const submitBtn = document.querySelector("#submit-btn");
 
 /* constructor function for Book Objects*/
 function Book() {
+  /* select form control */
+  const genre = document.querySelector("#genre");
+  this.genre = genre.value;
   const allInputs = document.querySelectorAll("input");
   allInputs.forEach((input) => {
     if (input.name === "date-start") {
@@ -104,12 +110,9 @@ function Book() {
   /* textarea form control */
   const review = document.querySelector("#review");
   this.review = review.value;
-  /* select form control */
-  const genre = document.querySelector("#genre");
-  this.genre = genre.value;
   this.checkReadStatus();
 }
-
+/* checks if the book was read */
 Book.prototype.checkReadStatus = function () {
   const read = document.querySelector("#read");
   if (read.checked) {
@@ -139,6 +142,7 @@ function displayLibrary() {
 
   for (let book of myLibrary) {
     let container = document.createElement("div");
+    container.classList.add("book")
     librarySection.appendChild(container);
     let list =
       document.createElement(
@@ -169,12 +173,16 @@ function clickSubmitBtn() {
     addBookToLibrary();
     displayLibrary();
     resetStars();
-    let disabledInputs = document.querySelectorAll(".disabled");
+
+    if (readCheckbox.checked) {
+      disableEnableHiddenInputs();
+    }
+   /*  let disabledInputs = document.querySelectorAll(".disabled");
     disabledInputs.forEach((disabledInput) => {
       disabledInput.getAttribute("disabled") === null
         ? disabledInput.setAttribute("disabled", "")
         : disabledInput.removeAttribute("disabled");
-    });
+    }); */
 
     exitFormBtnReset();
     form.reset();
