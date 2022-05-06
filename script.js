@@ -40,7 +40,9 @@ function resetStars() {
 
 function disableEnableHiddenInputs() {
   disabledInputs.forEach((disabledInput) => {
-    disabledInput.toggleAttribute("disabled")/* getAttribute("disabled") === null
+    disabledInput.toggleAttribute(
+      "disabled"
+    ); /* getAttribute("disabled") === null
       ? disabledInput.setAttribute("disabled", "")
       : disabledInput.removeAttribute("disabled"); */
   });
@@ -121,6 +123,11 @@ Book.prototype.checkReadStatus = function () {
     this.read = false;
   }
 };
+/* add read sign if btn pressed */
+
+Book.prototype.changeReadStatus = function () {
+  this.read = true;
+};
 
 //array filled with library books
 let myLibrary = [];
@@ -142,30 +149,50 @@ function displayLibrary() {
 
   for (let book of myLibrary) {
     let container = document.createElement("div");
-    container.classList.add("book")
-    container.setAttribute("data-book-position", myLibrary.indexOf(book))
+    container.classList.add("book");
+    container.setAttribute("data-book-position", myLibrary.indexOf(book));
     librarySection.appendChild(container);
     let dltBookBtn = document.createElement("button");
+    /* delete book button */
     dltBookBtn.setAttribute("type", "button");
-    dltBookBtn.setAttribute("data-book-position", myLibrary.indexOf(book))
+    dltBookBtn.setAttribute("data-book-position", myLibrary.indexOf(book));
     dltBookBtn.classList.add("dlt-book-btn");
     container.appendChild(dltBookBtn);
     dltBookBtn.addEventListener("click", () => {
-      if (container["data-book-position"]===dltBookBtn["data-book-position"]) {
+      if (
+        container["data-book-position"] === dltBookBtn["data-book-position"]
+      ) {
         container.remove();
-        myLibrary.splice(dltBookBtn["data-book-position"], 1)
+        myLibrary.splice(dltBookBtn["data-book-position"], 1);
       }
-    })
-    let list =
-      document.createElement(
-        "ul"
-      ); 
+    });
+
+    let list = document.createElement("ul");
     container.classList.add("listed-book");
     container.appendChild(list);
 
+    let readSignBtn = document.createElement("button");
+    readSignBtn.setAttribute("type", "button");
+    readSignBtn.classList.add(".read-btn");
+    container.appendChild(readSignBtn);
+    readSignBtn.addEventListener("click", () => {
+      let readSign = document.createElement("h5");
+      readSign.classList.add("read-sign");
+      readSign.textContent = "Finished Reading";
+      container.appendChild(readSign);
+      book.changeReadStatus();
+      console.log(book);
+    });
+
     for (let [key, value] of Object.entries(book)) {
+      console.log(key, value);
       if (key === "read") {
-        continue;
+        if (value) {
+          let readSign = document.createElement("h5");
+          readSign.classList.add("read-sign");
+          readSign.textContent = "Finished Reading";
+          container.appendChild(readSign);
+        }
       } else if (value) {
         let listItem = document.createElement("li");
         listItem.textContent = `${key}: ${value}`;
@@ -189,7 +216,7 @@ function clickSubmitBtn() {
     if (readCheckbox.checked) {
       disableEnableHiddenInputs();
     }
-   /*  let disabledInputs = document.querySelectorAll(".disabled");
+    /*  let disabledInputs = document.querySelectorAll(".disabled");
     disabledInputs.forEach((disabledInput) => {
       disabledInput.getAttribute("disabled") === null
         ? disabledInput.setAttribute("disabled", "")
