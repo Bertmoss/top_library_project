@@ -170,28 +170,31 @@ function displayLibrary() {
     let list = document.createElement("ul");
     container.classList.add("listed-book");
     container.appendChild(list);
-
+    /* Read Sign Button */
     let readSignBtn = document.createElement("button");
     readSignBtn.setAttribute("type", "button");
     readSignBtn.classList.add(".read-btn");
+    readSignBtn.textContent = "Read";
     container.appendChild(readSignBtn);
+
     readSignBtn.addEventListener("click", () => {
-      let readSign = document.createElement("h5");
-      readSign.classList.add("read-sign");
-      readSign.textContent = "Finished Reading";
-      container.appendChild(readSign);
+      let readSignText = document.createElement("h4");
+      readSignText.classList.add("read-sign-text");
+      readSignText.textContent = "Finished Reading";
+      container.appendChild(readSignText);
       book.changeReadStatus();
-      console.log(book);
+      readSignBtn.setAttribute("style", "display: none");
     });
 
     for (let [key, value] of Object.entries(book)) {
       console.log(key, value);
       if (key === "read") {
         if (value) {
-          let readSign = document.createElement("h5");
-          readSign.classList.add("read-sign");
+          let readSign = document.createElement("h4");
+          readSign.classList.add("read-sign-text");
           readSign.textContent = "Finished Reading";
           container.appendChild(readSign);
+          readSignBtn.setAttribute("style", "display: none");
         }
       } else if (value) {
         let listItem = document.createElement("li");

@@ -57,6 +57,7 @@ select {
   background-color: white;
 }
 
+
 select,
 input[type="number"],
 input[type="date"] {
@@ -239,6 +240,23 @@ ul {
   align-items: flex-start;
   justify-content: space-evenly;
   gap: 20px;
+  
+}
+
+/* Read button class */
+.read-btn {
+  
+}
+
+/* Read button generated text */
+.read-sign-text {
+  background-image: url(/images/book.svg);
+  background-repeat: no-repeat;
+  background-size: 20px;
+  height: 30px;
+  text-indent: 25px;
+  width: fit-content;
+  margin: auto;
   
 }
 
