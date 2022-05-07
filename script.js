@@ -92,10 +92,10 @@ function Book() {
   const allInputs = document.querySelectorAll("input");
   allInputs.forEach((input) => {
     if (input.name === "date-start") {
-      let inputName = "Started reading on";
+      let inputName = "Started reading";
       this[inputName] = input.value;
     } else if (input.name === "date-end") {
-      let inputName = "Finished reading on";
+      let inputName = "Finished reading";
       this[inputName] = input.value;
       /* rating filter makes sure that only the checked rating form control is added.
       Otherwise it would add each one since they all have a value */
@@ -153,6 +153,14 @@ function displayLibrary() {
     container.setAttribute("data-book-position", myLibrary.indexOf(book));
     librarySection.appendChild(container);
     let dltBookBtn = document.createElement("button");
+    container.addEventListener("click", ()=> {
+      let minimizedItems = document.querySelectorAll(`.minimized`);
+      minimizedItems.forEach((minimizedItem) => {
+        minimizedItem.classList.toggle("not-displayed");
+      }) 
+    })
+
+
     /* delete book button */
     dltBookBtn.setAttribute("type", "button");
     dltBookBtn.setAttribute("data-book-position", myLibrary.indexOf(book));
@@ -173,7 +181,7 @@ function displayLibrary() {
     /* Read Sign Button */
     let readSignBtn = document.createElement("button");
     readSignBtn.setAttribute("type", "button");
-    readSignBtn.classList.add(".read-btn");
+    readSignBtn.classList.add(".read-btn", "not-displayed", "minimized");
     readSignBtn.textContent = "Read";
     container.appendChild(readSignBtn);
 
@@ -185,7 +193,7 @@ function displayLibrary() {
       book.changeReadStatus();
       readSignBtn.setAttribute("style", "display: none");
     });
-
+    /* Form controls result */
     for (let [key, value] of Object.entries(book)) {
       console.log(key, value);
       if (key === "read") {
@@ -199,6 +207,9 @@ function displayLibrary() {
       } else if (value) {
         let listItem = document.createElement("li");
         listItem.textContent = `${key}: ${value}`;
+        if (key !== "title" && key !== "author") {
+          listItem.classList.add("not-displayed", "minimized");
+        }
         list.appendChild(listItem);
       }
     }
