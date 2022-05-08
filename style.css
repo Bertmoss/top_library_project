@@ -17,9 +17,7 @@ h1 {
   font-size: 2rem;
   bottom: 25px;
   right: 25px;
-}
-:checked{
-  background: purple;
+  z-index: 2;
 }
 
 body {
