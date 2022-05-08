@@ -151,12 +151,14 @@ function displayLibrary() {
     let container = document.createElement("div");
     container.classList.add("book");
     container.setAttribute("data-book-position", myLibrary.indexOf(book));
+    let indexNum =  myLibrary.indexOf(book);
     librarySection.appendChild(container);
     let dltBookBtn = document.createElement("button");
     container.addEventListener("click", ()=> {
       let minimizedItems = document.querySelectorAll(`.minimized`);
-      minimizedItems.forEach((minimizedItem) => {
-        minimizedItem.classList.toggle("not-displayed");
+      minimizedItems.forEach((minimizedItem) => { 
+        if (minimizedItem.getAttribute("data-index") == indexNum) {
+        minimizedItem.classList.toggle("not-displayed");}
       }) 
     })
 
@@ -209,6 +211,7 @@ function displayLibrary() {
         listItem.textContent = `${key}: ${value}`;
         if (key !== "title" && key !== "author") {
           listItem.classList.add("not-displayed", "minimized");
+          listItem.setAttribute("data-index", indexNum)
         }
         list.appendChild(listItem);
       }
@@ -229,14 +232,7 @@ function clickSubmitBtn() {
 
     if (readCheckbox.checked) {
       disableEnableHiddenInputs();
-    }
-    /*  let disabledInputs = document.querySelectorAll(".disabled");
-    disabledInputs.forEach((disabledInput) => {
-      disabledInput.getAttribute("disabled") === null
-        ? disabledInput.setAttribute("disabled", "")
-        : disabledInput.removeAttribute("disabled");
-    }); */
-
+    } 
     exitFormBtnReset();
     form.reset();
   }
