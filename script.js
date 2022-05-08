@@ -184,6 +184,7 @@ function displayLibrary() {
     let readSignBtn = document.createElement("button");
     readSignBtn.setAttribute("type", "button");
     readSignBtn.classList.add(".read-btn", "not-displayed", "minimized");
+    readSignBtn.setAttribute("data-index", indexNum);
     readSignBtn.textContent = "Read";
     container.appendChild(readSignBtn);
 
