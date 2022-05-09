@@ -87,8 +87,6 @@ const submitBtn = document.querySelector("#submit-btn");
 /* constructor function for Book Objects*/
 function Book() {
   /* select form control */
-  const genre = document.querySelector("#genre");
-  this.genre = genre.value;
   const allInputs = document.querySelectorAll("input");
   allInputs.forEach((input) => {
     if (input.name === "date-start") {
@@ -112,6 +110,8 @@ function Book() {
   /* textarea form control */
   const review = document.querySelector("#review");
   this.review = review.value;
+  const genre = document.querySelector("#genre");
+  this.genre = genre.value;
   this.checkReadStatus();
 }
 /* checks if the book was read */
@@ -151,17 +151,18 @@ function displayLibrary() {
     let container = document.createElement("div");
     container.classList.add("book");
     container.setAttribute("data-book-position", myLibrary.indexOf(book));
-    let indexNum =  myLibrary.indexOf(book);
+    let indexNum = myLibrary.indexOf(book);
     librarySection.appendChild(container);
     let dltBookBtn = document.createElement("button");
-    container.addEventListener("click", ()=> {
+    /* Minimization */
+    container.addEventListener("click", () => {
       let minimizedItems = document.querySelectorAll(`.minimized`);
-      minimizedItems.forEach((minimizedItem) => { 
+      minimizedItems.forEach((minimizedItem) => {
         if (minimizedItem.getAttribute("data-index") == indexNum) {
-        minimizedItem.classList.toggle("not-displayed");}
-      }) 
-    })
-
+          minimizedItem.classList.toggle("not-displayed");
+        }
+      });
+    });
 
     /* delete book button */
     dltBookBtn.setAttribute("type", "button");
@@ -212,7 +213,19 @@ function displayLibrary() {
         listItem.textContent = `${key}: ${value}`;
         if (key !== "title" && key !== "author") {
           listItem.classList.add("not-displayed", "minimized");
-          listItem.setAttribute("data-index", indexNum)
+          listItem.setAttribute("data-index", indexNum);
+          if (key === "genre") { /* Inserts the genre behind the author list item */
+            console.log(indexNum)
+            let author =
+              document.querySelector(
+                `div[data-book-position="${indexNum}"] li:nth-child(2)` 
+              ); 
+            author.insertAdjacentElement(
+              "afterend",
+              listItem
+            ); 
+            continue;
+          }
         }
         list.appendChild(listItem);
       }
@@ -233,7 +246,7 @@ function clickSubmitBtn() {
 
     if (readCheckbox.checked) {
       disableEnableHiddenInputs();
-    } 
+    }
     exitFormBtnReset();
     form.reset();
   }

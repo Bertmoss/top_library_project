@@ -19,6 +19,9 @@ h1 {
   right: 25px;
   z-index: 2;
 }
+.genre {
+  order: 3;
+}
 
 body {
   margin: 0px;
