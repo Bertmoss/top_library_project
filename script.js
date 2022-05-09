@@ -66,8 +66,14 @@ const addBookBtn = document.querySelector("#add-book-btn");
 const form = document.querySelector("form");
 let notDisplayedSection = document.querySelector("section:last-of-type");
 
+
 addBookBtn.addEventListener("click", function () {
   form.classList.remove("not-displayed");
+  notDisplayedSection.setAttribute("disabled", "");
+  disabledInputs.forEach((disabledInput) => {
+    disabledInput.setAttribute("disabled", "");
+  })
+
 });
 
 function exitFormBtnReset() {
