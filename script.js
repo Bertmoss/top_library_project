@@ -106,7 +106,7 @@ function Book() {
     } else if (input.name === "rating") {
       if (input.name === "rating" && input.checked) {
         let inputName = input.name;
-        this[inputName] = `${input.value} stars`;
+        this[inputName] = input.value;
       }
     } else {
       let inputName = input.name;
@@ -216,12 +216,11 @@ function displayLibrary() {
         }
       } else if (value) {
         let listItem = document.createElement("li");
-        listItem.textContent = `${key}: ${value}`;
+        
         if (key !== "title" && key !== "author") {
           listItem.classList.add("not-displayed", "minimized");
           listItem.setAttribute("data-index", indexNum);
           if (key === "genre") { /* Inserts the genre behind the author list item */
-            console.log(indexNum)
             let author =
               document.querySelector(
                 `div[data-book-position="${indexNum}"] li:nth-child(2)` 
@@ -231,13 +230,31 @@ function displayLibrary() {
               listItem
             ); 
             continue;
+          } else if (key === "rating") {
+            listItem.textContent = `${key}: `;
+            for (let i = 1; i <= value;  i++) {
+              let star = document.createElement("img");
+              star.setAttribute("src", "/images/star-gold.svg");
+              star.setAttribute("alt", "image of star");
+              listItem.appendChild(star); 
+            }
+            list.appendChild(listItem);
+            continue;
           }
         }
+        listItem.textContent = `${key}: ${value}`;
         list.appendChild(listItem);
       }
     }
   }
 }
+/* 
+function showStarResults(starNumber) {
+  for (let i = 1; i <= starNumber)
+
+}
+ */
+
 
 /* check validity  */
 
