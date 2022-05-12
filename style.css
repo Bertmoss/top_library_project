@@ -222,6 +222,7 @@ input[type="radio"] + label {
 .book {
   position: relative;
   width: 300px;
+  min-height: 176px;
   border: black 1px solid;
 }
 
@@ -258,6 +259,16 @@ li::first-letter {
   text-transform: capitalize;
 }
 
+
+
+@media screen and (min-width: 900px) { 
+  #book-library-section {
+    margin: 0px 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+}
 /*
 form {
   width: 500px;
