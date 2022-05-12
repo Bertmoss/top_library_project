@@ -4,8 +4,11 @@
   font-family: "Roboto Slab", serif;
 }
 
+
 h1 {
   text-align: center;
+  color: #83c5be;
+  text-shadow: 2px 2px white;
 }
 #add-book-btn {
   position: fixed;
@@ -14,10 +17,16 @@ h1 {
   padding: 0px;
   margin: 0px;
   border-radius: 100px;
+  border-color: #83c5be;
+  background-color: white;
   font-size: 2rem;
   bottom: 25px;
   right: 25px;
-  z-index: 2;
+  z-index: 200;
+}
+#add-book-btn:active {
+  width: 55px;
+  height: 55px;
 }
 .genre {
   order: 3;
@@ -25,6 +34,7 @@ h1 {
 
 body {
   margin: 0px;
+  background-color: #edf6f9;
 }
 
 form {
@@ -36,7 +46,7 @@ form {
   z-index: 1;
   background-color: white;
   width: 300px;
-  border: black 1px solid;
+  border: #83c5be 5px solid;
 }
 
 form label,
@@ -117,7 +127,6 @@ button {
   margin: 0px auto 20px auto;
   display: block;
 }
-/*Dropdown Menu  SHOULD STYLIZE ALL OF THEM WITH THE SAME MARGIN PADDING BORDER WIDTH AND HEIGHT*/
 
 /* Required Sign*/
 input + span {
@@ -163,7 +172,7 @@ input[type="checkbox"]:checked::before {
 }
 
 input[type="checkbox"]:checked {
-  border: 3px solid green;
+  border: 3px solid #83c5be;
 }
 
 /*Stylized Rating Radio Inputs*/
@@ -178,6 +187,10 @@ input[type="radio"] {
 }
 .black-star {
   background-image: url(/images/star.svg);
+}
+#submit-btn {
+  background-color: #edf6f9;
+  border-color: #83c5be;
 }
 
 /*Hide Rating Radio Labels*/
@@ -201,9 +214,10 @@ input[type="radio"] + label {
   -webkit-appearance: none;
   appearance: none;
   border: none;
-  width: 25px;
-  height: 25px;
-  background: url(/images/x-circle.svg) no-repeat center;
+  border-radius: 110px;
+  width: 24px;
+  height: 24px;
+  background: url(/images/x-circle\ \(1\).svg) no-repeat center #edf6f9;
 }
 .dlt-book-btn {
   position: absolute;
@@ -214,22 +228,25 @@ input[type="radio"] + label {
   -webkit-appearance: none;
   appearance: none;
   border: none;
-  width: 25px;
-  height: 25px;
-  background: url(/images/x-circle.svg) no-repeat center;
+  border-radius: 110px;
+  width: 24px;
+  height: 24px;
+  background: url(/images/x-circle\ \(1\).svg) no-repeat center #edf6f9;
 }
 
 .book {
   position: relative;
   width: 300px;
   min-height: 176px;
-  border: black 1px solid;
+  border: #83c5be 5px solid;
+  background-color: white;
 }
 
 li {
   list-style: none;
   word-wrap: break-word;
   max-width: 250px;
+  
 }
 
 ul {
@@ -243,6 +260,10 @@ ul {
 
 /* Read button class */
 .read-btn {
+  /* -webkit-appearance: none;
+  appearance: none; */
+  background-color: #edf6f9;
+  border: black 1px solid;
 }
 
 /* Read button generated text */
@@ -259,7 +280,7 @@ li::first-letter {
   text-transform: capitalize;
 }
 
-
+/* Larger screens */
 
 @media screen and (min-width: 900px) { 
   #book-library-section {
@@ -269,63 +290,3 @@ li::first-letter {
   }
   
 }
-/*
-form {
-  width: 500px;
-}
-
-HAVENT ADDED YET
-label,
-input[type="select"],
-legend {
-  font-size: 16px;
-  font-family: "Courier New", Courier, monospace;
-}
-XXXXXX
-
-
-section {
-  margin: 50px; //check if still necessary since padding added
-}
-
-input[type="text"],
-textarea {
-  width: 400px;
-}
-
-input[type="number"] {
-  width: 100px;
-}
-
-section > div {
-  width: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-div > div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  justify-content: center;
-}
-input + span {
-  position: relative;
-}
-
-input:required + span::after {
-  box-sizing: border-box;
-  position: absolute;
-
-  font-size: 0.7rem;
-  padding: 5px 10px;
-  border: black 1px solid;
-  content: "required";
-  left: 350px;
-  bottom: 50px;
-
-  text-align: center;
-}
-*/

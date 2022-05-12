@@ -3,10 +3,17 @@
 const readCheckbox = document.querySelector("#read");
 const disabledInputs = document.querySelectorAll(".disabled");
 
-//RATING BUTTON FUNCTIONALITY
+//2. Rating button functionality
 
 const starRating = document.querySelectorAll(".star-rating");
 
+//3. Add book button and not display read part 
+
+const addBookBtn = document.querySelector("#add-book-btn");
+const form = document.querySelector("form");
+let notDisplayedSection = document.querySelector("section:last-of-type");
+
+/* STAR RATING */
 starRating.forEach((star) => {
   star.addEventListener("click", function () {
     activateStars(this.value);
@@ -34,7 +41,7 @@ function resetStars() {
   });
 }
 
-//1. "HAVE YOU FINISHED IT" CHECKBOX FUNCTIONALITY (readCheckbox)
+//"HAVE YOU FINISHED IT" CHECKBOX FUNCTIONALITY (readCheckbox)
 
 /* Disables or enables the inputs that are hidden behind the "Have you finished it" checkbox (readCheckbox)*/
 
@@ -42,9 +49,7 @@ function disableEnableHiddenInputs() {
   disabledInputs.forEach((disabledInput) => {
     disabledInput.toggleAttribute(
       "disabled"
-    ); /* getAttribute("disabled") === null
-      ? disabledInput.setAttribute("disabled", "")
-      : disabledInput.removeAttribute("disabled"); */
+    );
   });
 }
 
@@ -62,10 +67,7 @@ readCheckbox.addEventListener("click", () => {
   });
 });
 
-const addBookBtn = document.querySelector("#add-book-btn");
-const form = document.querySelector("form");
-let notDisplayedSection = document.querySelector("section:last-of-type");
-
+/* ADD BOOK BUTTON AND EXIT FORM BUTTON */
 
 addBookBtn.addEventListener("click", function () {
   form.classList.remove("not-displayed");
@@ -90,7 +92,8 @@ exitFormBtn.addEventListener("click", exitFormBtnReset);
 const inputs = document.querySelectorAll("input");
 const submitBtn = document.querySelector("#submit-btn");
 
-/* constructor function for Book Objects*/
+/*CONSTRUCTOR FUNCTION FOR BOOK OBJECTS*/
+
 function Book() {
   /* select form control */
   const allInputs = document.querySelectorAll("input");
@@ -129,21 +132,22 @@ Book.prototype.checkReadStatus = function () {
     this.read = false;
   }
 };
-/* add read sign if btn pressed */
+/* ADD READ SIGN IF BUTTON PRESSED*/
 
 Book.prototype.changeReadStatus = function () {
   this.read = true;
 };
 
-//array filled with library books
+//ARRAY FILLED WITH BOOKS AND ADDING BOOKS TO THE ARRAY
 let myLibrary = [];
+
 
 function addBookToLibrary() {
   let book = new Book();
   myLibrary.push(book);
 }
 
-/* displaying the library books */
+/* DISPLAYING BOOKS FROM ARRAY */
 const librarySection = document.querySelector("#book-library-section");
 
 function displayLibrary() {
@@ -161,8 +165,18 @@ function displayLibrary() {
     librarySection.appendChild(container);
     let dltBookBtn = document.createElement("button");
     /* Minimization */
-    container.addEventListener("click", () => {
+    container.addEventListener("mouseover", () => {
       let minimizedItems = document.querySelectorAll(`.minimized`);
+      
+      minimizedItems.forEach((minimizedItem) => {
+        if (minimizedItem.getAttribute("data-index") == indexNum) {
+          minimizedItem.classList.toggle("not-displayed");
+        }
+      });
+    });
+    container.addEventListener("mouseout", () => {
+      let minimizedItems = document.querySelectorAll(`.minimized`);
+      
       minimizedItems.forEach((minimizedItem) => {
         if (minimizedItem.getAttribute("data-index") == indexNum) {
           minimizedItem.classList.toggle("not-displayed");
@@ -190,7 +204,7 @@ function displayLibrary() {
     /* Read Sign Button */
     let readSignBtn = document.createElement("button");
     readSignBtn.setAttribute("type", "button");
-    readSignBtn.classList.add(".read-btn", "not-displayed", "minimized");
+    readSignBtn.classList.add("read-btn", "not-displayed", "minimized");
     readSignBtn.setAttribute("data-index", indexNum);
     readSignBtn.textContent = "Read";
     container.appendChild(readSignBtn);
@@ -224,7 +238,8 @@ function displayLibrary() {
             let author =
               document.querySelector(
                 `div[data-book-position="${indexNum}"] li:nth-child(2)` 
-              ); 
+              );
+            listItem.textContent = `${key}: ${value}`; 
             author.insertAdjacentElement(
               "afterend",
               listItem
@@ -248,15 +263,8 @@ function displayLibrary() {
     }
   }
 }
-/* 
-function showStarResults(starNumber) {
-  for (let i = 1; i <= starNumber)
 
-}
- */
-
-
-/* check validity  */
+/* VALIDITY CHECK */
 
 /* event listener for the "submit" button in the form*/
 function clickSubmitBtn() {
